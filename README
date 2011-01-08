@@ -19,69 +19,10 @@ For example:
 		Then The browser title should have Hello World
 
 ## Writing Step Defitions ##
-Step definitions can be written in Scala, using the cuke4duke Scala DSL. More information on this api can be obtained from the the [cuke4duke wiki page for scala](http://wiki.github.com/aslakhellesoy/cuke4duke/scala).
-For example:
-    import cuke4duke.{EN, ScalaDsl}
-    import org.scalatest.matchers.ShouldMatchers
-
-    class CucumberSteps extends ScalaDsl with EN with ShouldMatchers {
-
-      private var givenCalled = false
-      private var whenCalled = false
-
-      Given("""^A SBT project$""") {
-        givenCalled = true
-      }
-
-      When("""^I run the cucumber goal$""") {
-        whenCalled = true
-      }
-
-      Then("""^Cucumber is executed against my features and step definitions$""") {
-        givenCalled should be (true)
-        whenCalled should be (true)
-      }
-    }
-
-## Project Setup ##
-In the plugin definition file (project/plugins/Plugin.scala), add the cucumber-sbt-plugin dependency:
-    import sbt._
-
-    class Plugins(info: ProjectInfo) extends PluginDefinition(info) {
-      val templemoreRepo = "templemore sbt repo" at "http://templemore.co.uk/repo"
-      val cucumberPlugin = "templemore" % "cucumber-sbt-plugin" % "0.3.0"
-    }
-
-In your project file (i.e. project/build/TestProject.scala), mixin the CucumberProject trait:
-    import sbt._
-    import templemore.sbt.CucumberProject
-
-    class TestProject(info: ProjectInfo) extends DefaultWebProject(info) with CucumberProject {
-
-      // Test Dependencies
-      val scalatest = "org.scalatest" % "scalatest" % "1.2" % "test"
-
-      //...
-    }
-
-This trait will all the cuke4duke dependency into your project for use in writing the step definitions.
-
-## Customisation ##
-The plugin supports a number of customisations. The following overrides can be added to your project file to change the behaviour of the plugin:
-
-* cucumberVersion - Allows overriding the version of Cucumber that will be used (default: 0.9.4)
-* cuke4dukeVersion - Allows overriding the version of cuke4duke that will be used (default: 0.4.2)
-* picoContainerVersion - Allows overriding the version of PicoContainer used by cuke4duke (default: 2.11.2)
-* prawnVersion - Allows overriding the version of the prawn gem that will be used (default 0.8.4)
-* featuresDirectory - The location cucumber looks in for feature files (default: info.projectPath / "features")
-* extraCucumberOptions - Allows specifying of additional options to Cucumber, such as tags or names (default: Empty List)
-* standardCucumberOptions - Allows overriding the custom options for the 'cucumber' goal (default: --format pretty --no-source --no-snippets)
-* devCucumberOptions - Allows overriding the custom options for the 'cucumber-dev' goal (default: --format pretty)
-* htmlCucumberOptions - Allows overriding the custom options for the 'cucumber-html' goal (default: --format html --out target/cucumber.html)
-* pdfCucumberOptions - Allows overriding the custom options for the 'cucumber-pdf' goal (default: --format pdf --out target/cucumber.pdf)
+Step definitions are written in Java, using the cuke4duke Java DSL. More information on this api can be obtained from the the [cuke4duke wiki page for java](http://wiki.github.com/aslakhellesoy/cuke4duke/java).
 
 ## Roadmap ##
 Current plans:
 
-* Upgrade to support sbt 0.7.5 and Scala 2.8.1
+* Add page object example to the project.
 
