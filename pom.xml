@@ -42,15 +42,14 @@
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-remote-control</artifactId>
-            <version>2.0b2</version>
+            <artifactId>selenium-htmlunit-driver</artifactId>
+            <version>2.1.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-server</artifactId>
-            <version>2.0b2</version>
-            <scope>test</scope>
+            <version>2.1.0</version>
         </dependency>
     </dependencies>
 
@@ -66,6 +65,7 @@
             <plugin>
                 <groupId>cuke4duke</groupId>
                 <artifactId>cuke4duke-maven-plugin</artifactId>
+                <version>0.4.3</version>
                 <configuration>
                     <jvmArgs>
                         <jvmArg>
