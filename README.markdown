@@ -4,7 +4,10 @@ A project setup to help you with getting started with [Cucumber](http://cukes.in
 Just run one of the cucumber actions to run all of the cucumber features.
 
 You can run the tests using the following command.
+
+
     mvn clean test
+
 this would download all the necessary jar files and will run the tests.
 
 ## Writing Features ##
