@@ -6,13 +6,7 @@
 
     <groupId>cucumberDemo</groupId>
     <artifactId>cucumberDemo</artifactId>
-    <version>1.0</version>
-    <repositories>
-        <repository>
-            <id>cukes</id>
-            <url>http://cukes.info/maven</url>
-        </repository>
-    </repositories>
+    <version>1.0-SNAPSHOT</version>
 
     <pluginRepositories>
         <pluginRepository>
@@ -23,15 +17,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.picocontainer</groupId>
-            <artifactId>picocontainer</artifactId>
-            <version>2.13.2</version>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>1.1.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>cuke4duke</groupId>
-            <artifactId>cuke4duke</artifactId>
-            <version>0.4.3</version>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>1.1.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -43,13 +43,13 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-htmlunit-driver</artifactId>
-            <version>2.1.0</version>
+            <version>2.25.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-server</artifactId>
-            <version>2.1.0</version>
+            <version>2.25.0</version>
         </dependency>
     </dependencies>
 
@@ -58,47 +58,17 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>cuke4duke</groupId>
-                <artifactId>cuke4duke-maven-plugin</artifactId>
-                <version>0.4.3</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.2</version>
                 <configuration>
-                    <jvmArgs>
-                        <jvmArg>
-                            -Dcuke4duke.objectFactory=cuke4duke.internal.jvmclass.PicoFactory
-                        </jvmArg>
-                        <jvmArg>-Dfile.encoding=UTF-8</jvmArg>
-                    </jvmArgs>
-                    <cucumberArgs>
-                        <cucumberArg>--backtrace</cucumberArg>
-                        <cucumberArg>--color</cucumberArg>
-                        <cucumberArg>--verbose</cucumberArg>
-                        <cucumberArg>--format</cucumberArg>
-                        <cucumberArg>pretty</cucumberArg>
-                        <cucumberArg>--format</cucumberArg>
-                        <cucumberArg>html</cucumberArg>
-                        <cucumberArg>--out</cucumberArg>
-                        <cucumberArg>target/cucumber-reports</cucumberArg>
-                        <cucumberArg>--require</cucumberArg>
-                        <cucumberArg>${basedir}/target/test-classes</cucumberArg>
-                    </cucumberArgs>
-                    <gems>
-                        <gem>install cuke4duke --version 0.4.3</gem>
-                    </gems>
+                    <useFile>false</useFile>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>run-features</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>cucumber</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
