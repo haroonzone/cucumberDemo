@@ -41,27 +41,22 @@ public class CalculatorSteps {
 
     private void parseInput(String input){
         if (input.contains("+")){
-            inputA = Integer.valueOf(input.substring(0,input.indexOf("+")));
-            inputB = Integer.valueOf(input.substring(input.lastIndexOf("+") + 1));
             operation = "+";
-        }
-
-        if (input.contains("/")){
-            inputA = Integer.valueOf(input.substring(0,input.indexOf("/")));
-            inputB = Integer.valueOf(input.substring(input.lastIndexOf("/") + 1));
+            initialize(input,operation);
+        }else if (input.contains("/")){
             operation = "/";
-        }
-
-        if (input.contains("*")){
-            inputA = Integer.valueOf(input.substring(0,input.indexOf("*")));
-            inputB = Integer.valueOf(input.substring(input.lastIndexOf("*") + 1));
+            initialize(input,operation);
+        }else if (input.contains("*")){
             operation = "*";
-        }
-
-        if (input.contains("-")){
-            inputA = Integer.valueOf(input.substring(0,input.indexOf("-")));
-            inputB = Integer.valueOf(input.substring(input.lastIndexOf("-") + 1));
+            initialize(input,operation);
+        }else if (input.contains("-")){
             operation = "-";
+            initialize(input,operation);
         }
+    }
+
+    private void initialize(String input,String operation) {
+        inputA = Integer.valueOf(input.substring(0,input.indexOf(operation)));
+        inputB = Integer.valueOf(input.substring(input.lastIndexOf(operation) + 1));
     }
 }
