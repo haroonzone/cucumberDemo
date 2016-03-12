@@ -17,7 +17,7 @@ public class GoogleSearchSteps {
 
     @Given("^The search is Hello World$")
     public void theSearchIsHelloWorld() {
-        driver = new HtmlUnitDriver();
+        driver = new HtmlUnitDriver(true);
         driver.get("http://www.google.co.uk");
         driver.findElement(By.xpath("//input[@name='q']")).sendKeys("Hello World");
     }

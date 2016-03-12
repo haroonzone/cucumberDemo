@@ -2,7 +2,7 @@ target/
 
 out
 build
-
+.idea/
 *.iws
 *.swp
 *.iml
